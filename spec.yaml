@@ -1,0 +1,70 @@
+blueprint:
+  id: wax-advanced-drop-mechanics-toolkit
+  name: Advanced Drop Mechanics Toolkit
+  tier: 2
+  category: atomic-ecosystem
+  status: in-development
+  version: 0.2
+
+metadata:
+  description: |
+    A high-quality reference for implementing advanced Atomic Drop mechanics on WAX,
+    including pity systems, guaranteed rewards, dynamic probabilities, and fair distribution patterns.
+  target_audience:
+    - Human developers building engaging drop systems
+    - AI agents generating advanced drop mechanics
+    - Teams focused on fair and rewarding player experiences on WAX
+  related_blueprints:
+    - wax-drops-and-pack-opening-experience
+    - wax-blends-creator-and-visualizer
+
+features:
+  - pity_system_simulator
+  - probability_modeling_and_visualization
+  - guaranteed_rewards_patterns
+  - fair_distribution_tools
+  - reusable_simulation_engines
+  - multiple_integration_levels
+
+integration_levels:
+  minimal:
+    description: Basic pity system + static probability display
+    recommended_for: Simple prototypes and learning
+  recommended:
+    description: Full simulators + visual feedback + fairness checks
+    recommended_for: Most production drop systems
+  advanced:
+    description: Dynamic probabilities, batch simulation, advanced analytics
+    recommended_for: Complex or high-engagement economies
+
+machine_instructions:
+  - |
+    Build interactive pity system simulator with clear visual feedback.
+  - |
+    Implement probability modeling and visualization tools.
+  - |
+    Create reusable patterns for guaranteed rewards and fairness protections.
+  - |
+    Support multiple integration levels with progressive complexity.
+  - |
+    Emphasize responsible and fair design in all mechanics.
+
+technical_requirements:
+  framework: Next.js 15 + TypeScript (strict)
+  styling: Tailwind + shadcn/ui + framer-motion
+  simulation: Pure client-side JavaScript engines
+  design_system: pixel-journey-design-system
+
+best_practices:
+  - Always simulate and explain mechanics clearly to players
+  - Use pity and guaranteed rewards responsibly
+  - Test thoroughly for abuse vectors
+  - Keep simulation logic pure and testable
+  - Provide both visual and textual explanations
+  - Monitor real-world behavior and adjust over time
+
+future_extensions:
+  - Advanced dynamic probability engines
+  - Cross-drop pity and progression systems
+  - Creator analytics dashboards
+  - Integration with economy simulators
