@@ -1,26 +1,52 @@
 # wax-advanced-drop-mechanics-toolkit — Advanced Drop Mechanics Toolkit
 
-> **Status:** 🔄 In Active Deep Refinement (PX Perfection Standard)  
-> **Category:** Atomic Ecosystem & Drop Mechanics (WAX-Specific)  
-> **Parent Catalog:** [pixel-journey/wax-ecosystem-blueprint-catalog](https://github.com/pixel-journey/wax-ecosystem-blueprint-catalog)
-> **Benchmark Standard:** gkniftyheads-tracker quality + Pixel Journey retro-pixel excellence + PX Perfection Standard v1.0
+> **Status:** 🔄 In Active Development (Pixel Journey Standard)  
+> **Category:** Atomic Ecosystem – Advanced Drop Mechanics  
+> **Parent Catalog:** [wax-ecosystem-blueprint-catalog](https://github.com/pixel-journey/wax-ecosystem-blueprint-catalog)
 
-**One-sentence goal:** A toolkit of patterns, simulators, and best practices for implementing advanced Atomic Drop mechanics on WAX, including pity systems, guaranteed rewards, dynamic probabilities, and fair distribution.
+**Goal:** Provide a high-quality, educational, and practical reference for implementing advanced Atomic Drop mechanics on WAX, including pity systems, guaranteed rewards, dynamic probabilities, and fair distribution patterns.
+
+This toolkit helps developers build more engaging, fair, and trustworthy drop experiences.
+
+---
+
+## Vision & Long-Term Participation Mindset
+
+Basic drops are common, but advanced mechanics like pity systems, guaranteed rewards, and dynamic probabilities greatly improve player engagement, perceived fairness, and long-term retention.
+
+This blueprint makes these powerful mechanics accessible, understandable, and responsibly implementable — helping creators build systems that feel rewarding without being exploitative.
+
+We build this for long-term participants who want their drop systems to be both exciting and fair.
+
+---
+
+## Quick Start
+
+**For Human Developers**
+1. Read the Educational Core and Architecture sections.
+2. Review the Integration Guide and Best Practices.
+3. Use the simulators and code patterns in your project.
+
+**For AI Agents & AI-Assisted Development**
+- Start with `spec.yaml` for structured machine instructions.
+- Use the Architecture and simulation patterns as high-quality context.
 
 ---
 
 ## 1. Educational Core — Why Advanced Drop Mechanics Matter
 
-Basic drops are common on WAX, but advanced mechanics like pity systems, guaranteed rewards, and dynamic probabilities significantly improve engagement, fairness perception, and long-term player retention. This blueprint makes these powerful mechanics accessible, understandable, and responsibly implementable.
+Basic drops work, but advanced mechanics significantly improve engagement and trust.
 
 ### Key Concepts
 
-- **Pity Systems**: Increasing probability of rare rewards after repeated failures.
-- **Guaranteed Rewards**: Ensuring certain items after a defined number of attempts.
-- **Dynamic Probabilities**: Adjusting rates based on behavior or global state.
-- **Fair Distribution**: Preventing abuse while maintaining engagement.
+| Concept                    | Description                                              | Why It Matters                              |
+|----------------------------|----------------------------------------------------------|---------------------------------------------|
+| Pity Systems               | Increasing probability of rare rewards after failures    | Improves perceived fairness and retention   |
+| Guaranteed Rewards         | Ensuring certain items after a set number of attempts    | Reduces frustration from bad luck           |
+| Dynamic Probabilities      | Adjusting rates based on behavior or state               | Enables smarter, more engaging systems      |
+| Fair Distribution          | Preventing abuse while maintaining engagement            | Protects economy and player trust           |
 
-### Common Challenges This Toolkit Addresses
+### Common Challenges
 
 | Challenge                          | Impact                              | How This Toolkit Helps                      |
 |------------------------------------|-------------------------------------|---------------------------------------------|
@@ -30,70 +56,124 @@ Basic drops are common on WAX, but advanced mechanics like pity systems, guarant
 
 ### Learning Outcomes
 
-After using this blueprint, you will be able to:
+After studying this repository, you should be able to:
 - Design and implement pity systems and guaranteed rewards
-- Model and simulate drop probabilities
-- Apply fairness protections responsibly
-- Build engaging and trustworthy drop experiences
+- Model and simulate drop probabilities responsibly
+- Apply fairness protections
+- Build more engaging and trustworthy drop experiences
 
 ---
 
-## 2. Design & Technical Recommendations
+## 2. Architecture & Design Decisions
 
-### Recommended Approach
-- Interactive simulators for pity and probability modeling
-- Clear, visual documentation of mechanics
-- Reusable code patterns for on-chain and client-side logic
-- Strong emphasis on fairness and anti-abuse
+### Recommended Tech Stack
 
-### Key Components
-- PitySystemSimulator
-- ProbabilityCalculator
-- GuaranteedRewards patterns
-- FairDistribution guidance
-- CodeExamples
+- **Framework**: Next.js 15 + TypeScript (strict)
+- **UI**: Tailwind + shadcn/ui + framer-motion
+- **State**: Zustand
+- **Simulation**: Pure client-side JavaScript engines
+- **Design System**: Pixel Journey Design System
+
+### Core Component Architecture
+
+```
+/components/
+  PitySystemSimulator.tsx
+  ProbabilityCalculator.tsx
+  GuaranteedRewards.tsx
+  FairnessProtections.tsx
+  DropSimulator.tsx
+```
+
+### Key Design Decisions
+
+- Pure client-side simulation for instant, free feedback
+- Clear separation between simulation and on-chain execution
+- Strong emphasis on fairness and anti-abuse patterns
+- Reusable engines that can be adapted to different drop types
+- Visual and textual explanations of mechanics
 
 ---
 
-## 3. Machine-Optimized Spec (spec.yaml)
+## 3. Integration Guide
 
-```yaml
-blueprint:
-  id: wax-advanced-drop-mechanics-toolkit
-  tier: 2
-  category: atomic-ecosystem
-  status: alpha-ready
+### How to Integrate This Pattern
 
-features:
-  - pity_system_simulator
-  - probability_modeling
-  - guaranteed_rewards_patterns
-  - fair_distribution_tools
-  - reusable_code_examples
+1. Implement simulation engines for pity/probability/guaranteed rewards
+2. Add clear visualizations of how mechanics work
+3. Connect to your drop claiming flow with proper validation
+4. Apply fairness protections and anti-abuse checks
 
-machine_instructions:
-  - "Build interactive pity system simulator"
-  - "Implement probability modeling and visualization"
-  - "Create patterns for guaranteed rewards and fairness protections"
+### Integration Levels
+
+- **Minimal**: Basic pity system + static probability display
+- **Recommended**: Full simulators + visual feedback + fairness checks
+- **Advanced**: Dynamic probabilities, batch simulation, advanced analytics
+
+---
+
+## 4. Best Practices
+
+- Always simulate and explain mechanics clearly to players
+- Use pity and guaranteed rewards responsibly (avoid making systems feel manipulative)
+- Test edge cases thoroughly (especially abuse vectors)
+- Keep simulation logic pure and testable (client-side)
+- Provide both visual and textual explanations
+- Monitor real-world usage and adjust parameters over time
+
+---
+
+## 5. Code Examples
+
+### Simple Pity System Concept
+
+```ts
+// Simple pity engine (conceptual)
+function calculatePityDrop(attempts: number, baseRates: any) {
+  // Increase rare item probability based on attempts
+  // Return adjusted rates or specific outcome
+}
+```
+
+### Guaranteed Reward Pattern
+
+```ts
+// Guaranteed reward after N attempts
+if (attemptsSinceLastRare >= guaranteedThreshold) {
+  return guaranteedItem;
+}
 ```
 
 ---
 
-## 4. Implementation Notes
+## 6. Machine Instructions (For AI Agents)
 
-Full simulators, engines, and patterns are committed to the repository with a focus on reusability and educational clarity.
+See `spec.yaml` for structured instructions.
+
+Key instructions:
+- Build interactive pity system simulator
+- Implement probability modeling and visualization
+- Create patterns for guaranteed rewards and fairness protections
+- Support multiple integration levels
 
 ---
 
-## 5. Ecosystem Position
+## 7. Ecosystem Position
 
 Direct companion to `wax-drops-and-pack-opening-experience` and other Atomic/gamification tools. Essential for advanced engagement features on WAX.
 
+Builds on the foundational layer:
+- `pixel-journey-standards`
+- `gitbook-docs`
+- `pixel-journey-templates`
+- `wax-ecosystem-blueprint-catalog`
+
 ---
 
-## 6. License & Credits
+## 8. License & Credits
 
-MIT License — Built with ❤️ for advanced, fair drop mechanics on WAX.
-Pixel Journey — Beautiful interfaces for public blockchain data.
+MIT License
 
-*Last updated: July 02, 2026 — Deep Refinement Pass*
+Pixel Journey — Educational, practical, and beautiful interfaces for public blockchain infrastructure.
+
+*Last updated: July 2026*
