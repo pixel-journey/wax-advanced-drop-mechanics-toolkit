@@ -31,11 +31,23 @@ WAX has multiple public drop contracts in active use (e.g. `atomicdropsx` and ot
 **For Human Developers**
 1. Read the Educational Core and Architecture sections.
 2. Review the Integration Guide and Best Practices.
-3. Use the simulators and code patterns in your project.
+3. Explore the real component examples in the `/examples` folder.
+4. Use the simulators and code patterns in your project.
 
 **For AI Agents & AI-Assisted Development**
 - Start with `spec.yaml` for structured machine instructions.
 - Use the Architecture and simulation patterns as high-quality context.
+
+---
+
+## Examples Folder
+
+This repository includes a dedicated `/examples` folder with production-ready components:
+
+- `PitySystemSimulator.tsx` — Interactive pity system simulator
+- `GuaranteedRewards.tsx` — Progress toward guaranteed rewards
+
+More components (probability calculators, fairness tools, full simulators) will be added.
 
 ---
 
@@ -136,26 +148,10 @@ After studying this repository, you should be able to:
 
 ## 5. Code Examples
 
-Real component examples are available in the `/examples` folder (to be expanded).
+Real component examples are available in the `/examples` folder:
 
-### Simple Pity System Concept
-
-```ts
-// Simple pity engine (conceptual)
-function calculatePityDrop(attempts: number, baseRates: any) {
-  // Increase rare item probability based on attempts
-  // Return adjusted rates or specific outcome
-}
-```
-
-### Guaranteed Reward Pattern
-
-```ts
-// Guaranteed reward after N attempts
-if (attemptsSinceLastRare >= guaranteedThreshold) {
-  return guaranteedItem;
-}
-```
+- `PitySystemSimulator.tsx` — Interactive pity system simulator
+- `GuaranteedRewards.tsx` — Progress toward guaranteed rewards
 
 ---
 
