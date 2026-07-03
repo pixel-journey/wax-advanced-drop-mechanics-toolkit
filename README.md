@@ -48,8 +48,7 @@ This repository includes a dedicated `/examples` folder with production-ready co
 - `GuaranteedRewards.tsx` — Progress toward guaranteed rewards
 - `ProbabilityCalculator.tsx` — Probability breakdown with pity bonus
 - `FairnessProtections.tsx` — Daily limits and abuse prevention
-
-More components will be added.
+- `demo.tsx` — Full composition example
 
 ---
 
@@ -156,6 +155,7 @@ Real component examples are available in the `/examples` folder:
 - `GuaranteedRewards.tsx` — Progress toward guaranteed rewards
 - `ProbabilityCalculator.tsx` — Probability breakdown with pity bonus
 - `FairnessProtections.tsx` — Daily limits and abuse prevention
+- `demo.tsx` — Full composition example
 
 ---
 
