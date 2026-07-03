@@ -49,6 +49,7 @@ This repository includes a dedicated `/examples` folder with production-ready co
 - `ProbabilityCalculator.tsx` — Probability breakdown with pity bonus
 - `FairnessProtections.tsx` — Daily limits and abuse prevention
 - `demo.tsx` — Full composition example
+- `types.ts` — Shared types for consistency
 
 ---
 
@@ -156,6 +157,7 @@ Real component examples are available in the `/examples` folder:
 - `ProbabilityCalculator.tsx` — Probability breakdown with pity bonus
 - `FairnessProtections.tsx` — Daily limits and abuse prevention
 - `demo.tsx` — Full composition example
+- `types.ts` — Shared types for consistency
 
 ---
 
