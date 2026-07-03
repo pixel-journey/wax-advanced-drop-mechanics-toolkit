@@ -20,6 +20,12 @@ We build this for long-term participants who want their drop systems to be both 
 
 ---
 
+## Important Note on Real Contracts
+
+WAX has multiple public drop contracts in active use (e.g. `atomicdropsx` and others). The patterns in this toolkit are designed to be adaptable to different contracts. Always verify the specific contract and test thoroughly on testnet when building production systems.
+
+---
+
 ## Quick Start
 
 **For Human Developers**
@@ -121,9 +127,16 @@ After studying this repository, you should be able to:
 - Provide both visual and textual explanations
 - Monitor real-world usage and adjust parameters over time
 
+### Anti-Patterns to Avoid
+- Making pity systems feel too grindy or manipulative
+- Hiding how the mechanics actually work from players
+- Insufficient testing of edge cases and abuse vectors
+
 ---
 
 ## 5. Code Examples
+
+Real component examples are available in the `/examples` folder (to be expanded).
 
 ### Simple Pity System Concept
 
