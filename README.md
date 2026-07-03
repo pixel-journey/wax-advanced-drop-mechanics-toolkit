@@ -146,6 +146,16 @@ After studying this repository, you should be able to:
 - Hiding how the mechanics actually work from players
 - Insufficient testing of edge cases and abuse vectors
 
+### Production Readiness Checklist
+
+- [ ] Clear simulation of all mechanics with visual + textual explanations
+- [ ] Pity and guaranteed reward logic is pure and testable
+- [ ] Fairness protections (daily limits, rate limiting) are implemented
+- [ ] Abuse vectors have been tested and mitigated
+- [ ] Examples work with real drop contracts (e.g. atomicdropsx)
+- [ ] Documentation explains how to adapt to different contracts
+- [ ] Demo exists showing component composition
+
 ---
 
 ## 5. Code Examples
@@ -166,10 +176,12 @@ Real component examples are available in the `/examples` folder:
 See `spec.yaml` for structured instructions.
 
 Key instructions:
-- Build interactive pity system simulator
-- Implement probability modeling and visualization
-- Create patterns for guaranteed rewards and fairness protections
-- Support multiple integration levels
+- Build interactive pity system simulator with clear visual feedback and adjustable parameters.
+- Implement probability modeling and visualization tools with support for modifiers (e.g. pity).
+- Create reusable patterns for guaranteed rewards and fairness protections.
+- Support multiple integration levels with progressive complexity.
+- Emphasize responsible, fair, and non-manipulative design in all mechanics.
+- Prepare examples to work with real drop contracts.
 
 ---
 
