@@ -46,8 +46,9 @@ This repository includes a dedicated `/examples` folder with production-ready co
 
 - `PitySystemSimulator.tsx` — Interactive pity system simulator
 - `GuaranteedRewards.tsx` — Progress toward guaranteed rewards
+- `ProbabilityCalculator.tsx` — Probability breakdown with pity bonus
 
-More components (probability calculators, fairness tools, full simulators) will be added.
+More components will be added.
 
 ---
 
@@ -152,6 +153,7 @@ Real component examples are available in the `/examples` folder:
 
 - `PitySystemSimulator.tsx` — Interactive pity system simulator
 - `GuaranteedRewards.tsx` — Progress toward guaranteed rewards
+- `ProbabilityCalculator.tsx` — Probability breakdown with pity bonus
 
 ---
 
