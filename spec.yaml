@@ -3,74 +3,116 @@ blueprint:
   name: Advanced Drop Mechanics Toolkit
   tier: 2
   category: atomic-ecosystem
-  status: in-development
-  version: 0.3
+  status: refined
+  version: "0.5.0"
+  last_refined: "2026-10-15"
 
 metadata:
   description: |
-    A high-quality reference for implementing advanced Atomic Drop mechanics on WAX,
-    including pity systems, guaranteed rewards, dynamic probabilities, and fair distribution patterns.
-    Designed to be adaptable to real contracts such as atomicdropsx and others.
+    Premium educational and production-oriented reference for implementing advanced
+    Atomic Drop mechanics on WAX — pity systems, guaranteed rewards, dynamic
+    probabilities, and fair-distribution patterns — in a way that is engaging,
+    transparent, and responsible. Designed to be adaptable to real contracts
+    such as atomicdropsx and project-specific drop contracts.
   target_audience:
     - Human developers building engaging and fair drop systems
-    - AI agents generating advanced drop mechanics code
-    - Teams focused on long-term player retention and economy health on WAX
+    - AI agents generating or reviewing advanced drop mechanics
+    - Teams focused on long-term player retention and economy health
   related_blueprints:
     - wax-drops-and-pack-opening-experience
     - wax-blends-creator-and-visualizer
+    - wax-blend-economy-simulator
+  foundational_repos:
+    - pixel-journey-standards
+    - pixel-journey-templates
+    - gitbook-docs
+    - wax-ecosystem-blueprint-catalog
+
+fairness_invariants:
+  - Simulation is pure and client-side
+  - UI never claims a result the on-chain contract cannot deliver
+  - Current odds and progress are always visible to the player
+  - Pity and guarantee parameters are explainable in plain language
+  - Fairness protections are first-class
+  - Accessibility is treated as educational quality
 
 features:
-  - pity_system_simulator
-  - probability_modeling_and_visualization
-  - guaranteed_rewards_patterns
-  - fair_distribution_and_abuse_prevention
-  - reusable_simulation_engines
-  - interactive_demos
-  - multiple_integration_levels
+  implemented:
+    - PitySystemSimulator (soft + optional hard pity)
+    - GuaranteedRewards progress indicator
+    - ProbabilityCalculator (base vs adjusted)
+    - FairnessProtections (daily limits)
+    - DropSimulator (combined educational loop)
+    - Pure calculation engines (engines.ts)
+    - Full composition demo
+  planned:
+    - Live WharfKit claim path examples
+    - Multi-contract adapters
+    - Analytics hooks
+    - Batch simulation tools
 
 integration_levels:
   minimal:
-    description: Basic pity system + static probability display
-    recommended_for: Simple prototypes and learning
+    description: Basic pity counter + static probability display
+    recommended_for: Learning and simple prototypes
   recommended:
-    description: Full simulators + visual feedback + fairness checks
-    recommended_for: Most production drop systems
+    description: Full simulators, visual feedback, guarantees, fairness checks
+    recommended_for: Most production drop experiences
   advanced:
-    description: Dynamic probabilities, batch simulation, advanced analytics, multi-contract support
-    recommended_for: Complex or high-engagement economies
+    description: Dynamic engines, batch simulation, analytics, multi-contract support
+    recommended_for: Large or multi-drop economies
 
 machine_instructions:
   - |
-    Build interactive pity system simulator with clear visual feedback and adjustable parameters.
+    Keep all complex probability and pity logic pure and client-side.
   - |
-    Implement probability modeling and visualization tools with support for modifiers (e.g. pity).
+    Never let the UI claim a result the on-chain contract cannot deliver.
   - |
-    Create reusable patterns for guaranteed rewards and fairness protections (daily limits, rate limiting).
+    Always surface current odds and progress to the player.
   - |
-    Support multiple integration levels with progressive complexity.
+    Use the pure functions in examples/engines.ts as the canonical calculation layer.
   - |
-    Emphasize responsible, fair, and non-manipulative design in all mechanics.
+    Prefer calm, factual language around limits and guarantees.
   - |
-    Prepare examples to work with real drop contracts (e.g. atomicdropsx).
+    Support the three integration levels (Minimal / Recommended / Advanced).
+  - |
+    When extending, preserve the strict separation between simulation and execution.
+  - |
+    Respect accessibility (labels, live regions, progressbar roles, reduced motion).
 
 technical_requirements:
   framework: Next.js 15 + TypeScript (strict)
-  styling: Tailwind + shadcn/ui + framer-motion
-  simulation: Pure client-side JavaScript engines
+  styling: Tailwind CSS
+  simulation: Pure client-side TypeScript engines
+  blockchain: WharfKit (when moving from simulation to claim)
   design_system: pixel-journey-design-system
 
+file_structure:
+  - examples/types.ts
+  - examples/engines.ts
+  - examples/PitySystemSimulator.tsx
+  - examples/GuaranteedRewards.tsx
+  - examples/ProbabilityCalculator.tsx
+  - examples/FairnessProtections.tsx
+  - examples/DropSimulator.tsx
+  - examples/demo.tsx
+  - examples/README.md
+  - ARCHITECTURE.md
+  - README.md
+  - spec.yaml
+  - AI_PROMPTS.md
+
 best_practices:
-  - Always simulate and explain mechanics clearly to players
-  - Use pity and guaranteed rewards responsibly (avoid feeling manipulative or overly grindy)
-  - Test thoroughly for abuse vectors and edge cases
-  - Keep simulation logic pure and testable (client-side first)
+  - Simulate and explain mechanics clearly to players
+  - Use pity and guarantees responsibly (avoid manipulative or overly grindy tuning)
+  - Test edge cases and abuse vectors
+  - Keep simulation logic pure and unit-testable
   - Provide both visual and textual explanations
-  - Monitor real-world behavior and adjust parameters over time
   - When using real contracts, always test on testnet first
 
 future_extensions:
-  - Advanced dynamic probability engines with server-side validation
+  - Advanced dynamic probability engines with optional server-side validation
   - Cross-drop pity and progression systems
   - Creator analytics dashboards
-  - Integration with broader gamification tools (achievements, battle passes)
-  - Multi-contract support for different drop providers
+  - Deeper integration with pack-opening and gamification tools
+  - Multi-contract adapters for different drop providers
