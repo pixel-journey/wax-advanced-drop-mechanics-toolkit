@@ -5,7 +5,7 @@
 *Advanced Drop Mechanics Toolkit (Atomic Ecosystem)*
 
 **Date Started**: 2026-10-15  
-**Current Status**: Active deep refinement — Passes 1 & 2 complete.
+**Current Status**: Active deep refinement — Passes 1–4 complete.
 
 ---
 
@@ -18,26 +18,35 @@ Starting readiness score: ~78–82/100
 ## Pass 1 — Documentation Elevation (Completed 2026-10-15)
 
 - Root README elevated to full PX Perfection Standard
-- Stronger vision, fairness ethics, progressive disclosure, anti-patterns, production checklist
 - Score after Pass 1: ~88–90/100
 
 ## Pass 2 — Architecture & Fairness Patterns (Completed 2026-10-15)
 
-- ARCHITECTURE.md fully rewritten with:
-  - Explicit Fairness & Safety Invariants
-  - Layered architecture diagram emphasizing simulation vs execution boundary
-  - Precise component contracts
-  - Clear data-flow and error-handling expectations
-  - Accessibility treated as educational quality
-  - Extension points and ecosystem relationships
+- ARCHITECTURE.md rewritten with Fairness & Safety Invariants, precise contracts, simulation-vs-execution boundary
+- Score after Pass 2: ~91–93/100
 
-**Current estimated score**: ~91–93/100
+## Pass 3/4 — Example Components Elevated (Completed 2026-10-15)
+
+**What was done**:
+
+- Expanded and documented `types.ts`
+- Added pure, deterministic `engines.ts` (calculatePityChance, applyPityBonus, guaranteeProgress, isGuaranteeReady, remainingAllowance)
+- Fully elevated:
+  - `PitySystemSimulator` — pure engine, accessibility, educational copy, hard-pity support
+  - `GuaranteedRewards` — pure engine, proper progressbar semantics, calm messaging
+  - `ProbabilityCalculator` — transparent base vs adjusted arithmetic
+  - `FairnessProtections` — clear limits, calm “limit reached” messaging
+  - `DropSimulator` — no alert spam, inline results, pure engine
+  - `demo.tsx` — cleaner composition with shared state and educational framing
+- Updated `examples/README.md` to document the new structure and design rules
+
+**Current estimated score**: ~94–96/100
 
 ### Checklist Progress
 - [x] Phase 2.1: Audit & Baseline
 - [x] Phase 2.2: Documentation Deep Dive & Expansion
 - [x] Phase 2.3: Architecture & Fairness Patterns deepening
-- [ ] Phase 2.4: Elevate example components + strengthen project structure
+- [x] Phase 2.4: Elevate example components + pure engines
 - [ ] Phase 2.5: Machine/AI layer + final polish
 - [ ] Phase 2.6: Sign-off & update central priority list
 
@@ -45,7 +54,7 @@ Starting readiness score: ~78–82/100
 
 ## Next Action
 
-**Pass 3/4**: Review and elevate the existing `/examples` components (PitySystemSimulator, GuaranteedRewards, ProbabilityCalculator, FairnessProtections, DropSimulator) to higher quality, consistency, and accessibility, and add any missing project foundation files if useful.
+**Pass 5**: Enrich `spec.yaml`, add a concise `AI_PROMPTS.md`, do a final polish pass, write the completion report, and mark this blueprint Done in the central priority list.
 
 ---
 
