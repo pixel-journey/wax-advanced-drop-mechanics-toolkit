@@ -1,79 +1,201 @@
 # ARCHITECTURE.md — Advanced Drop Mechanics Toolkit
 
-This document provides deeper technical context for the advanced drop mechanics blueprint.
+This document defines the technical and ethical architecture for the blueprint. It is the authoritative reference for both human developers and AI agents implementing or extending these patterns.
 
-## Overview
+---
 
-The goal of this toolkit is to help developers implement advanced drop mechanics (pity systems, guaranteed rewards, dynamic probabilities, and fairness protections) in a clean, educational, and production-ready way.
+## 1. Overview & Design Intent
 
-## Core Principles
+Advanced drop mechanics (pity, guarantees, dynamic probabilities, fairness protections) sit at the intersection of game design, economics, and player trust.
 
-- **Fairness first**: Mechanics should feel rewarding without being manipulative or abusive.
-- **Transparency**: Players should understand how the system works.
-- **Simulation-first**: Complex logic should be testable and visualizable client-side before going on-chain.
-- **Reusability**: Engines and components should be easy to adapt to different drop types and contracts.
-- **Safety**: Strong validation and anti-abuse protections.
+This architecture prioritizes, in order:
 
-## High-Level Architecture
+1. **Fairness & Transparency** — players should be able to understand and believe the system
+2. **Simulation-first** — complex logic must be testable and visualizable before any on-chain cost
+3. **Clear separation** — simulation never pretends to be the authoritative on-chain result
+4. **Reusability** — engines and components must adapt cleanly to different drop contracts
+5. **Accessibility** — the educational value is lost if the interface is not usable by everyone
+
+---
+
+## 2. Core Fairness & Safety Invariants
+
+These rules must hold in every implementation that claims to follow this blueprint:
+
+| # | Invariant | Rationale |
+|---|-----------|-----------|
+| 1 | Simulation is pure and client-side | Instant feedback, zero cost, fully testable, no false promises |
+| 2 | UI never claims a result the on-chain contract cannot deliver | Trust is destroyed the first time the UI and chain disagree |
+| 3 | Current odds and progress are always visible to the player | Hidden pity or guarantees feel manipulative |
+| 4 | Pity and guarantee parameters are explainable in plain language | Players form better relationships with systems they understand |
+| 5 | Fairness protections (limits, rate limiting, etc.) are first-class | Protects both the economy and the long-term player base |
+| 6 | Accessibility is treated as part of educational quality | Exclusion reduces the value of the toolkit |
+
+---
+
+## 3. High-Level Architecture
 
 ```
-User Interface (Next.js + Tailwind + shadcn/ui)
-          │
-          ▼
-Simulation Layer (Pure client-side engines)
-          │
-          ▼
-State Management (Zustand)
-          │
-          ▼
-Visualization Components (Pity, Guaranteed, Probability, Fairness)
-          │
-          ▼
-On-chain Execution (via WharfKit + real drop contract)
+┌─────────────────────────────────────────────────────────────┐
+│                    User Interface Layer                     │
+│         Next.js 15 + Tailwind + framer-motion               │
+│              (respects prefers-reduced-motion)              │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Simulation & Education Layer                   │
+│  PitySystemSimulator · GuaranteedRewards ·                  │
+│  ProbabilityCalculator · FairnessProtections ·              │
+│  DropSimulator (combined playground)                        │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                 Pure Calculation Engines                    │
+│        (deterministic, side-effect free, unit-testable)     │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Claim / Execution Layer (optional)             │
+│         WharfKit session + clear transaction preview        │
+│              → real drop contract (e.g. atomicdropsx)       │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## Key Components
+The critical boundary is between the **Simulation & Education Layer** and the **Claim / Execution Layer**. Crossing that boundary should always be an explicit, previewable user action.
 
-| Component                    | Responsibility                                      | Key Technologies          |
-|------------------------------|-----------------------------------------------------|---------------------------|
-| `PitySystemSimulator`        | Interactive pity probability simulation             | React + client-side calc  |
-| `GuaranteedRewards`          | Progress tracking toward guaranteed items           | React state + progress UI |
-| `ProbabilityCalculator`      | Dynamic probability display with modifiers          | Pure calculation logic    |
-| `FairnessProtections`        | Daily limits and abuse prevention indicators        | React + simple logic      |
-| `demo.tsx`                   | Full composition example                            | All components together   |
+---
 
-## Data Flow
+## 4. Component Contracts
 
-1. User interacts with simulators (client-side only)
-2. Mechanics are visualized and explained in real time
-3. When ready, the system connects to a real drop contract (e.g. `atomicdropsx` or project-specific)
-4. On-chain execution happens with proper validation
-5. Results are confirmed and UI is updated
+### 4.1 PitySystemSimulator
 
-## Simulation vs On-Chain
+**Responsibility**: Let the user explore how pity changes odds over consecutive failures.
 
-- All complex probability and pity logic runs **client-side** for instant feedback and education.
-- On-chain execution is kept minimal and only triggered after clear user confirmation.
-- This separation makes the system testable, auditable, and safer.
+**Minimum requirements**:
+- Adjustable base rate, soft-pity start, hard-pity ceiling
+- Live display of current probability after N failures
+- Visual curve or progress indicator
+- Plain-language explanation of the current state
+- Fully keyboard accessible
 
-## Error Handling & Safety
+### 4.2 GuaranteedRewards
 
-- All simulations should gracefully handle edge cases (zero attempts, max pity, etc.).
-- On-chain calls must include clear previews and confirmation steps.
-- Fairness protections (daily limits, rate limiting) should be enforced both client-side and on-chain where possible.
+**Responsibility**: Show progress toward a hard guarantee.
 
-## Accessibility Considerations
+**Minimum requirements**:
+- Clear counter (attempts remaining / total)
+- Visual progress
+- Distinction between soft pity and hard guarantee
+- Accessible text alternative for the progress indicator
 
-- All interactive simulators should support keyboard navigation.
-- Visual progress indicators should have text alternatives.
-- Reduced motion preferences should be respected.
+### 4.3 ProbabilityCalculator
 
-## Future Extensions
+**Responsibility**: Break down base probability + active modifiers (pity, etc.).
 
-- Advanced dynamic probability engines
-- Server-side authoritative simulation validation
-- Analytics dashboard for drop performance
-- Integration with broader gamification systems (achievements, battle passes)
-- Multi-contract support for different drop providers
+**Minimum requirements**:
+- Transparent arithmetic (base → modified)
+- Support for multiple simultaneous modifiers
+- Deterministic pure function at its core
 
-This architecture prioritizes **education + safety + reusability**, making it easier for developers to build advanced, fair drop systems on WAX.
+### 4.4 FairnessProtections
+
+**Responsibility**: Surface daily limits, rate limiting, and other anti-abuse signals.
+
+**Minimum requirements**:
+- Clear remaining allowance
+- Calm messaging when a limit is reached
+- Guidance that these protections exist to keep the system healthy for everyone
+
+### 4.5 DropSimulator (composition)
+
+**Responsibility**: Combine the above into a single educational playground.
+
+**Minimum requirements**:
+- All sub-components remain independently usable
+- State is easy to reset
+- No on-chain calls inside the pure simulation mode
+
+---
+
+## 5. Simulation vs On-Chain Execution
+
+| Concern | Simulation Layer | Claim / Execution Layer |
+|---------|------------------|-------------------------|
+| Purpose | Education, tuning, transparency | Actual reward distribution |
+| Cost | Zero | Gas / CPU / NET |
+| Authority | None (illustrative) | The drop contract is the source of truth |
+| Failure mode | User sees a simulated outcome | User must receive a clear preview and confirmation |
+| Testing | Unit tests + visual playground | Testnet + careful mainnet rollout |
+
+Never blur these two layers in the UI. A player should always know whether they are looking at a simulation or about to sign a real transaction.
+
+---
+
+## 6. Data Flow (Typical)
+
+1. Creator or player opens the simulator and adjusts parameters.
+2. Pure engines recalculate odds, pity progress, and guarantees in real time.
+3. Visualizations and plain-language explanations update.
+4. (Optional) Player decides to claim against a real drop contract.
+5. UI shows a clear preview of the on-chain action.
+6. WharfKit session presents the transaction for signing.
+7. Result is confirmed; any local simulation state is reconciled or reset as appropriate.
+
+---
+
+## 7. Error Handling & Edge Cases
+
+| Situation | Expected Behavior |
+|-----------|-------------------|
+| Zero attempts / fresh state | Show base rates clearly |
+| Hard pity reached | Guarantee is visible and understandable |
+| Daily limit reached | Calm explanation + when the limit resets |
+| Simulation parameters out of range | Clamp or reject with clear feedback |
+| On-chain claim fails | Explain the failure and offer a path forward |
+| UI and contract would disagree | Block the claim path and surface the mismatch |
+
+---
+
+## 8. Accessibility Requirements
+
+- Full keyboard operability for every interactive control
+- Meaningful labels and live regions for dynamic probability updates
+- Text alternatives for every progress bar or curve
+- Respect `prefers-reduced-motion`
+- High-contrast support for status and warning indicators
+
+Accessibility is part of the educational quality of this toolkit.
+
+---
+
+## 9. Extension Points
+
+Future work that stays compatible with this architecture:
+
+- Richer dynamic probability engines (time-based, inventory-based, etc.)
+- Server-side or contract-side authoritative validation of simulation parameters
+- Analytics hooks for drop performance
+- Deeper integration with pack-opening and broader gamification systems
+- Multi-contract adapters for different drop providers
+
+All extensions must continue to obey the Fairness & Safety Invariants in §2.
+
+---
+
+## 10. Relationship to Other Blueprints
+
+This architecture is intentionally complementary to:
+
+- `wax-drops-and-pack-opening-experience` — the broader drop and pack UX surface
+- Other Atomic and gamification tools in the catalog
+
+Shared patterns (probability display, progress indicators, calm limit messaging) should be kept consistent across the Atomic family.
+
+---
+
+*This architecture prioritizes fairness, transparency, education, and clean separation of simulation from execution.*
+
+**Pixel Journey — Beautiful interfaces for public blockchain data.**
