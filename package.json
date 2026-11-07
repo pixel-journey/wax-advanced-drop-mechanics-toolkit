@@ -1,0 +1,12 @@
+{
+  "name": "wax-advanced-drop-mechanics-toolkit",
+  "private": true,
+  "description": "Pure pity and allowance math. Not atomicdropsx and not a claim.",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "vitest": "^2.1.8"
+  }
+}

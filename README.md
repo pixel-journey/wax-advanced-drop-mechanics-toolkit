@@ -1,5 +1,7 @@
 # wax-advanced-drop-mechanics-toolkit
 
+> **Trust:** `educational-reference` for `examples/engines.ts` only. `npm test` locks that file. The React simulators are not executed. This is not `atomicdropsx` and not a claim. Course: [EDUCATION.md](EDUCATION.md).
+
 > **Status:** 🔄 Deep Refinement in Progress (PX Perfection Standard)  
 > **Category:** Atomic Ecosystem – Advanced Drop Mechanics  
 > **Parent Catalog:** [wax-ecosystem-blueprint-catalog](https://github.com/pixel-journey/wax-ecosystem-blueprint-catalog)  
