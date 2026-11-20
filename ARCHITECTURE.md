@@ -1,5 +1,7 @@
 # ARCHITECTURE.md — Advanced Drop Mechanics Toolkit
 
+> **What `npm test` actually locks:** `examples/engines.ts` only (pity cap, unnormalized bonus, allowance). The React simulators are not executed. This is not `atomicdropsx`. The public course is [wax-pity-system-and-guaranteed-rewards](https://github.com/pixel-journey/wax-pity-system-and-guaranteed-rewards). The sections below are design notes, not a deployed contract.
+
 This document defines the technical and ethical architecture for the blueprint. It is the authoritative reference for both human developers and AI agents implementing or extending these patterns.
 
 ---
